@@ -28,14 +28,18 @@ keytool -v -list -keystore $machine.jks
 openssl pkcs12 -export -in ../certs-server/selfsigned.crt -inkey ../certs-server/$machine.key -out client.p12 -name "Whatever"
 
 keytool -genkey -dname "cn=CLIENT" -alias truststorekey -keyalg RSA -keystore ./client-truststore.jks -keypass whatever -storepass whatever
-keytool -import -keystore ./client-truststore.jks -file selfsigned.crt -alias myca
+keytool -import -keystore ./client-truststore.jks -file ../certs-server/selfsigned.crt -alias myca
 ```
 
 Import dnie
 
 ```
 openssl x509 -in ACRAIZ-SHA2.crt -inform DER -out ACRAIZ-SHA2-PEM.crt -outform PEM
-keytool -import -keystore client-truststore.jks -file ACRAIZ-SHA2-PEM.crt
+keytool -import -keystore client-truststore.jks -file ACRAIZ-SHA2-PEM.crt -alias DNIE -trustcacerts
+
+
+openssl x509 -in ACRAIZ-DNIE2.crt  -out ACRAIZ-DNIE2-PEM.crt -outform PEM
+keytool -import -keystore client-truststore.jks -file ACRAIZ-DNIE2-PEM.crt -alias DNIE2 -trustcacerts
 ```
 
 #Generate curl

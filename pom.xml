@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <jacoco.haltOnFailure>false</jacoco.haltOnFailure>
-        <jacoco.version>0.8.2</jacoco.version>
+        <jacoco.version>0.8.3</jacoco.version>
         <jacoco.line.coveredRatio>0.85</jacoco.line.coveredRatio>
         <jacoco.branch.coveredRatio>0.85</jacoco.branch.coveredRatio>
         <!--Sonar -->
